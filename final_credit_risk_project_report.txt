@@ -1,0 +1,122 @@
+======================================================================
+EXPLAINABLE CREDIT RISK PREDICTION
+FINAL PROJECT REPORT
+======================================================================
+
+Report generated: 2026-10-02 04:47:41
+
+1. PROJECT OVERVIEW
+----------------------------------------------------------------------
+This project develops a machine learning framework for credit-default prediction using a synthetic credit-risk dataset. The project combines exploratory data analysis, feature engineering, supervised machine learning, model comparison and explainable AI using SHAP.
+
+2. DATASET
+----------------------------------------------------------------------
+Total applications      : 10,000
+Default cases           : 2,297
+Default rate            : 22.97%
+Dataset type            : Synthetic credit applications
+
+3. FEATURE ENGINEERING
+----------------------------------------------------------------------
+Engineered variables included:
+- Log income
+- Log loan amount
+- Loan-to-income ratio
+- Loan-to-credit-score ratio
+- Payment burden indicator
+- Credit-history-to-age ratio
+- Late-payment rate
+- High loan burden indicator
+- High debt-to-income indicator
+- Low credit-score indicator
+- Late-payment indicator
+- Multiple existing loans indicator
+- Risk indicator count
+
+4. MODEL PERFORMANCE
+----------------------------------------------------------------------
+
+LOGISTIC REGRESSION
+Accuracy  : 0.781
+Precision : 0.653
+Recall    : 0.102
+F1 Score  : 0.177
+ROC-AUC   : 0.706
+
+RANDOM FOREST
+Accuracy  : 0.742
+Precision : 0.426
+Recall    : 0.366
+F1 Score  : 0.394
+ROC-AUC   : 0.691
+
+5. MODEL INTERPRETATION
+----------------------------------------------------------------------
+The models show different performance characteristics. Logistic Regression achieved higher accuracy, precision and ROC-AUC, while Random Forest achieved higher recall and F1 score for the default class. This demonstrates the trade-off between identifying more potential defaults and limiting false-positive predictions.
+
+6. SHAP EXPLAINABILITY
+----------------------------------------------------------------------
+The ten highest-ranked features by mean absolute SHAP value were:
+
+1. numerical__debt_to_income — 0.042699
+2. numerical__credit_score — 0.039915
+3. numerical__employment_years — 0.028334
+4. numerical__high_dti — 0.023575
+5. numerical__risk_indicator_count — 0.020278
+6. numerical__existing_loans — 0.013275
+7. numerical__loan_credit_score_ratio — 0.011860
+8. numerical__loan_to_income_ratio — 0.008330
+9. numerical__low_credit_score — 0.008120
+10. numerical__payment_burden_indicator — 0.007209
+
+SHAP values were used to understand the contribution of individual features to model predictions. Positive SHAP values increase the model's predicted default risk, while negative SHAP values reduce it for the explained prediction. SHAP values describe model behaviour rather than causal relationships.
+
+7. INDIVIDUAL CUSTOMER EXPLANATION
+----------------------------------------------------------------------
+Customer ID              : 1543
+Actual default status    : 0
+Predicted default status : 0
+Default probability      : 0.3744
+Default probability (%)  : 37.44%
+
+Top contributing features for this individual prediction:
+
+- numerical__credit_score: 0.041555 (increased risk)
+- numerical__existing_loans: -0.029237 (reduced risk)
+- numerical__risk_indicator_count: -0.029087 (reduced risk)
+- numerical__employment_years: -0.024951 (reduced risk)
+- numerical__loan_credit_score_ratio: -0.019574 (reduced risk)
+- numerical__loan_to_income_ratio: -0.017568 (reduced risk)
+- numerical__high_dti: -0.012927 (reduced risk)
+- numerical__late_payment_rate: -0.008664 (reduced risk)
+- numerical__debt_to_income: -0.006947 (reduced risk)
+- numerical__loan_term_months: -0.006742 (reduced risk)
+
+8. RESPONSIBLE AI CONSIDERATIONS
+----------------------------------------------------------------------
+The dataset used in this project is synthetic and therefore the model performance should not be interpreted as evidence of real-world credit-risk accuracy. Real lending models require representative historical data, validation, fairness assessment, governance, monitoring and appropriate human oversight.
+
+SHAP explanations describe model behaviour and should not be interpreted as causal relationships. Any production credit decision would require appropriate validation, governance and regulatory controls.
+
+9. LIMITATIONS
+----------------------------------------------------------------------
+- The dataset is synthetic.
+- Model performance may not generalise to real borrowers.
+- No external credit bureau data was used.
+- No real-world economic or macroeconomic variables were used.
+- Further calibration and validation would be required for production use.
+- SHAP explains model behaviour rather than causality.
+
+10. TECHNOLOGIES
+----------------------------------------------------------------------
+Python
+Pandas
+NumPy
+Scikit-learn
+Matplotlib
+SHAP
+Jupyter Notebook
+
+======================================================================
+END OF REPORT
+======================================================================
